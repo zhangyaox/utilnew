@@ -7,6 +7,12 @@ import org.junit.Test;
 public class StringUtilTest {
 
 	@Test
+	public void testIsNumber() {
+		boolean number = StringUtil.isNumber("0.1");
+		System.out.println(number);
+	}
+	
+	@Test
 	public void testHasLength() {
 		fail("Not yet implemented");
 	}

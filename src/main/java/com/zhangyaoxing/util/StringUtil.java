@@ -4,6 +4,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 public class StringUtil {
+	
+	//判断是否是数值类型
+	public static boolean isNumber(String str) {
+		String st="(-)?\\d+\\.?(\\d+)?";
+		return str.matches(st);
+	}
 	//方法1：判断源字符串是否有值，空引号(空白字符串)也算没值 (5分)
 	public static boolean hasLength(String src){
 		return null!=src&&src!="";
