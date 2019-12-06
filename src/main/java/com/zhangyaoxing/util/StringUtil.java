@@ -1,5 +1,8 @@
 package com.zhangyaoxing.util;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Random;
+
 public class StringUtil {
 	//方法1：判断源字符串是否有值，空引号(空白字符串)也算没值 (5分)
 	public static boolean hasLength(String src){
@@ -13,8 +16,23 @@ public class StringUtil {
 	//TODO 实现代码
 	}
 	//返回一个中文
-	public static char getChinese() {
-		return (char)(0x4e00+(int)(Math.random()*(0x9fa5-0x4e00+1)));
+	public static String getChinese() {
+		 String str = null;
+         int highPos, lowPos;
+         Random random = new Random();
+         highPos = (176 + Math.abs(random.nextInt(40)));//区码，0xA0打头，从第16区开始，即0xB0=11*16=176,16~55一级汉字，56~87二级汉字
+         random=new Random();
+         lowPos = 161 + Math.abs(random.nextInt(95));//位码，0xA0打头，范围第1~94列
+         byte[] bArr = new byte[2];
+        
+         bArr[0] = (new Integer(highPos)).byteValue();
+         bArr[1] = (new Integer(lowPos)).byteValue();
+         try {
+             str = new String(bArr, "GB2312");   //区位码组合成汉字
+         } catch (UnsupportedEncodingException e) {
+             e.printStackTrace();
+         }
+             return str;
 	}
 	//方法3：返回参数length个中文汉字字符串，字符集必须在GB2312(相当于中文简体)范围内，例如“中呀被”(5分)
 	public static String randomChineseString(int length){
