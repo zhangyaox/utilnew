@@ -2,9 +2,44 @@ package com.zhangyaoxing.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtil {
-	
+	/*
+	* 方法功能：根据正则在字符串提取一段值，用于后面在url地址里提取ID值。
+	* 例如在“http://news.cnstock.com/news,yw-201908-4413224.htm”把“4413224”提取出来。
+	*/
+	public static String getLastNumber(String url) {
+		String regex ="[0-9]+(?=[^0-9]*$)";
+	    //编译规则
+		Pattern c = Pattern.compile(regex);
+		//匹配
+		Matcher m = c.matcher(url);
+		if(m.find()) {
+			return m.group();
+		}
+		return null;
+		
+	}
+	//是否是手机号类型 11位
+	public static boolean isPhoneNumber(String phone) {
+		if(hasText(phone)) {
+			String str="1[3|4|5|6|7|8|9]\\d{9}";
+			return phone.matches(str);
+		}else {
+			return false;
+		}
+	}
+	//是否是邮箱类型
+	public static boolean isEmail(String email) {
+		if(hasText(email)) {
+			String str="^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";//\\w+\\@\\w+\\.\\w+
+			return email.matches(str);
+		}else {
+			return false;
+		}
+	}
 	//判断是否是数值类型
 	public static boolean isNumber(String str) {
 		String st="(-)?\\d+\\.?(\\d+)?";

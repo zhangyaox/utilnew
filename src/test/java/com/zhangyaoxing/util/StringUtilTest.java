@@ -7,6 +7,21 @@ import org.junit.Test;
 public class StringUtilTest {
 
 	@Test
+	public void getLastNumber() {
+		String lastNumber = StringUtil.getLastNumber("http://news.cnstock.com/news,yw-201908-4413224.htm");
+		System.out.println("lastNumber==="+lastNumber);
+	}
+	@Test
+	public void testIsPhoneNumber() {
+		boolean phoneNumber = StringUtil.isPhoneNumber("13123456789");
+		System.out.println(phoneNumber);
+	}
+	@Test
+	public void testIsEmail() {
+		boolean number = StringUtil.isEmail("xx");
+		System.out.println(number);
+	}
+	@Test
 	public void testIsNumber() {
 		boolean number = StringUtil.isNumber("0.1");
 		System.out.println(number);
