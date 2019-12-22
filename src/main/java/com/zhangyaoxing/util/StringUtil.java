@@ -1,11 +1,39 @@
 package com.zhangyaoxing.util;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringUtil {
+	
+	/**
+	 * 校验传入的参数是否为url
+	 * @param param
+	 * @return
+	 */
+	public static boolean isHttpUrl(String param) {
+		 URL url;  
+		 try {  
+	         url = new URL(param);
+	        url.openStream();  
+	         return true; 
+	    } catch (Exception e1) {  
+	         System.out.println("连接打不开!");  
+
+	    }  
+		 return false;
+
+	}
+	
+	public static BufferedReader read(InputStream in){
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+		return bufferedReader;
+	}
 	/*
 	* 方法功能：根据正则在字符串提取一段值，用于后面在url地址里提取ID值
 	* 例如在“http://news.cnstock.com/news,yw-201908-4413224.htm”把“4413224”提取出来。

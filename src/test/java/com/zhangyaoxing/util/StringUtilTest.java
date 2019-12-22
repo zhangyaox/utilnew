@@ -7,6 +7,11 @@ import org.junit.Test;
 public class StringUtilTest {
 
 	@Test
+	public void getisHttpUrl() {
+		boolean httpUrl = StringUtil.isHttpUrl("https://github.com/charles201311/bobo-utils/commit/1dfdd8336645492c9f997dd38971168e04cfa624");
+		System.out.println(httpUrl);
+	}
+	@Test
 	public void getLastNumber() {
 		String lastNumber = StringUtil.getLastNumber("http://news.cnstock.com/news,yw-201908-4413224.htm");
 		System.out.println("lastNumber==="+lastNumber);
