@@ -5,7 +5,21 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class StringUtilTest {
-
+	
+	@Test
+	public void getname() {
+//		String name = StringUtil.getName();
+//		System.out.println(name);
+//		String sex = StringUtil.getSex();
+//		System.out.println(sex);
+//		String birthday = StringUtil.getBirthday();
+//		System.out.println(birthday);
+//		String mail = StringUtil.getMail();
+//		System.out.println(mail);
+		String phone = StringUtil.getPhone();
+		System.out.println(phone);
+	}
+	
 	@Test
 	public void getisHttpUrl() {
 		boolean httpUrl = StringUtil.isHttpUrl("https://github.com/charles201311/bobo-utils/commit/1dfdd8336645492c9f997dd38971168e04cfa624");
